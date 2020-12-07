@@ -9,10 +9,16 @@ export default function App() {
     return (
         <div>
             <Form />
-            <FullTimeJob />
-            <SearchForLocation />
-            <CheckboxesForJobocation />
-            <JobLists />
+            <article className="main_components">
+                <div className="search_different_jobs">
+                    <FullTimeJob />
+                    <SearchForLocation />
+                    <CheckboxesForJobocation />
+                </div>
+                <div className="jobs">
+                    <JobLists />
+                </div>
+            </article>
         </div>
     )
 }

@@ -87,5 +87,23 @@ button[type="submit"] {
     text-align: end;
 }
 
+@media (min-width: 700px) {
+    .main_components {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: 32px;
+        column-gap: 32px;
+    }
+
+    .search_different_jobs {
+        grid-column: 1 / 2;
+    }
+
+    .jobs {
+        grid-column: 2 / 4;
+    }
+
+}
+
 
 /*# sourceMappingURL=/styles.8986bff4.css.map */

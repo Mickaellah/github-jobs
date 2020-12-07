@@ -32184,7 +32184,13 @@ var _CheckboxesForJobLocation = _interopRequireDefault(require("./Components/Che
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function App() {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Form.default, null), /*#__PURE__*/_react.default.createElement(_FullTimeJob.default, null), /*#__PURE__*/_react.default.createElement(_SearchForLocation.default, null), /*#__PURE__*/_react.default.createElement(_CheckboxesForJobLocation.default, null), /*#__PURE__*/_react.default.createElement(_JobLists.default, null));
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Form.default, null), /*#__PURE__*/_react.default.createElement("article", {
+    className: "main_components"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "search_different_jobs"
+  }, /*#__PURE__*/_react.default.createElement(_FullTimeJob.default, null), /*#__PURE__*/_react.default.createElement(_SearchForLocation.default, null), /*#__PURE__*/_react.default.createElement(_CheckboxesForJobLocation.default, null)), /*#__PURE__*/_react.default.createElement("div", {
+    className: "jobs"
+  }, /*#__PURE__*/_react.default.createElement(_JobLists.default, null))));
 }
 },{"react":"node_modules/react/index.js","./Components/Form":"Components/Form.js","./Components/JobLists":"Components/JobLists.js","./Components/FullTimeJob":"Components/FullTimeJob.js","./Components/SearchForLocation":"Components/SearchForLocation.js","./Components/CheckboxesForJobLocation":"Components/CheckboxesForJobLocation.js"}],"index.js":[function(require,module,exports) {
 "use strict";
