@@ -29794,6 +29794,70 @@ function Form() {
     type: "submit"
   }, "Search")));
 }
+},{"react":"node_modules/react/index.js"}],"Context.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ContextProvider = exports.default = ContextProvider;
+exports.Context = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "LOADING":
+      {
+        return { ...state,
+          loading: true
+        };
+      }
+
+    case "JOBS":
+      {
+        return { ...state,
+          data: action.data
+        };
+      }
+  }
+}
+
+const Context = _react.default.createContext();
+
+exports.Context = Context;
+
+function ContextProvider({
+  children
+}) {
+  const initialState = {
+    loading: false,
+    data: []
+  };
+  const [state, dispatch] = (0, _react.useReducer)(reducer, initialState);
+  const API = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json";
+  (0, _react.useEffect)(() => {
+    dispatch({
+      type: "LOADING"
+    });
+    fetch(API).then(response => response.json()).then(data => {
+      dispatch({
+        type: "JOBS",
+        data: data
+      });
+    });
+  }, [API]);
+  return /*#__PURE__*/_react.default.createElement(Context.Provider, {
+    value: {
+      state,
+      dispatch
+    }
+  }, children);
+}
 },{"react":"node_modules/react/index.js"}],"Components/JobLists.js":[function(require,module,exports) {
 "use strict";
 
@@ -29804,24 +29868,17 @@ exports.default = JobLists;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _Context = require("../Context");
+
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function JobLists() {
-  const [jobs, setJobs] = (0, _react.useState)([]);
-  const API = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json";
-
-  async function getJobLists() {
-    const res = await fetch(API);
-    const data = await res.json();
-    setJobs(data);
-  }
-
-  (0, _react.useEffect)(() => {
-    getJobLists();
-  }, []);
-  return /*#__PURE__*/_react.default.createElement("div", null, jobs.map(job => {
+  const {
+    state
+  } = (0, _react.useContext)(_Context.Context);
+  return /*#__PURE__*/_react.default.createElement("div", null, state.data.map(job => {
     let time = new Date(job.created_at);
     return /*#__PURE__*/_react.default.createElement("div", {
       key: job.id,
@@ -29839,7 +29896,7 @@ function JobLists() {
     }, /*#__PURE__*/_react.default.createElement("p", null, job.location), /*#__PURE__*/_react.default.createElement("span", null, time.toLocaleTimeString('it-IT')))));
   }));
 }
-},{"react":"node_modules/react/index.js"}],"node_modules/react-is/cjs/react-is.development.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../Context":"Context.js"}],"node_modules/react-is/cjs/react-is.development.js":[function(require,module,exports) {
 /** @license React v16.13.1
  * react-is.development.js
  *
@@ -32201,10 +32258,12 @@ var _reactDom = _interopRequireDefault(require("react-dom"));
 
 var _App = _interopRequireDefault(require("./App"));
 
+var _Context = require("./Context");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom.default.render( /*#__PURE__*/_react.default.createElement(_App.default, null), document.getElementById('root'));
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./App":"App.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+_reactDom.default.render( /*#__PURE__*/_react.default.createElement(_Context.ContextProvider, null, /*#__PURE__*/_react.default.createElement(_App.default, null)), document.getElementById('root'));
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./App":"App.js","./Context":"Context.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -32232,7 +32291,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56615" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52139" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
