@@ -29794,6 +29794,51 @@ function Form() {
     type: "submit"
   }, "Search")));
 }
+},{"react":"node_modules/react/index.js"}],"Components/JobLists.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = JobLists;
+
+var _react = _interopRequireWildcard(require("react"));
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function JobLists() {
+  const [jobs, setJobs] = (0, _react.useState)([]);
+  const API = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json";
+
+  async function getJobLists() {
+    const res = await fetch(API);
+    const data = await res.json();
+    setJobs(data);
+  }
+
+  (0, _react.useEffect)(() => {
+    getJobLists();
+  }, []);
+  return /*#__PURE__*/_react.default.createElement("div", null, jobs.map(job => {
+    let time = new Date(job.created_at);
+    return /*#__PURE__*/_react.default.createElement("div", {
+      key: job.id,
+      className: "job_card"
+    }, /*#__PURE__*/_react.default.createElement("img", {
+      src: job.company_logo,
+      alt: "Company logo"
+    }), /*#__PURE__*/_react.default.createElement("div", {
+      className: "content"
+    }, /*#__PURE__*/_react.default.createElement("h3", null, job.company), /*#__PURE__*/_react.default.createElement("p", null, job.title), /*#__PURE__*/_react.default.createElement("button", {
+      className: "button",
+      type: "button"
+    }, job.type), /*#__PURE__*/_react.default.createElement("div", {
+      className: "location"
+    }, /*#__PURE__*/_react.default.createElement("p", null, job.location), /*#__PURE__*/_react.default.createElement("span", null, time.toLocaleTimeString('it-IT')))));
+  }));
+}
 },{"react":"node_modules/react/index.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
@@ -29806,12 +29851,14 @@ var _react = _interopRequireDefault(require("react"));
 
 var _Form = _interopRequireDefault(require("./Components/Form"));
 
+var _JobLists = _interopRequireDefault(require("./Components/JobLists"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function App() {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Form.default, null));
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Form.default, null), /*#__PURE__*/_react.default.createElement(_JobLists.default, null));
 }
-},{"react":"node_modules/react/index.js","./Components/Form":"Components/Form.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./Components/Form":"Components/Form.js","./Components/JobLists":"Components/JobLists.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));

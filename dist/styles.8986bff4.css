@@ -8,6 +8,10 @@ body > * {
     margin: 16px;
 }
 
+img {
+    width: 100%;
+}
+
 .search_form{
     padding: 32px;
     background-image: url('/backgroundImg.6e3bffce.png');
@@ -39,6 +43,48 @@ button[type="submit"] {
     padding-block: 12px;
     border-radius: 5px;
     -webkit-appearance: none;
+}
+
+.job_card {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 16px;
+    column-gap: 16px;
+    background-color: #ffffff;
+    margin-block-start: 32px;
+    border-radius: 10px;
+}
+
+.job_card > * {
+    margin: 16px;
+}
+
+.job_card > img {
+    width: 80%;
+    grid-column: 1 / 2;
+    border-radius: 12px;
+}
+
+.content {
+    grid-column: 2 / 4;
+}
+
+.button {
+    border: 2px solid gray;
+    border-radius: 5px;
+    padding: 8px;
+}
+
+.location {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-block-start: 16px;
+    color: lightgray;
+}
+
+.location > span {
+    margin-block-start: 16px;
+    text-align: end;
 }
 
 
