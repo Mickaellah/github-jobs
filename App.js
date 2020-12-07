@@ -1,9 +1,20 @@
 import React from 'react';
+
+import {
+	BrowserRouter as Router,
+    Switch,
+	Route
+} from 'react-router-dom';
+
+
+
 import Form from './Components/Form';
 import JobLists from './Components/JobLists';
 import FullTimeJob from './Components/FullTimeJob';
 import SearchForLocation from './Components/SearchForLocation';
 import CheckboxesForJobocation from './Components/CheckboxesForJobLocation';
+
+import JobDetails from './Components/JobDetails';
 
 export default function App() {
     return (
@@ -15,9 +26,19 @@ export default function App() {
                     <SearchForLocation />
                     <CheckboxesForJobocation />
                 </div>
-                <div className="jobs">
-                    <JobLists />
-                </div>
+
+            <Router>
+                <Switch>
+                    <Route path="/job">
+                        <div className="jobs">
+                            <JobLists />
+                        </div>
+                    </Route>
+                    <Route path="/job/:url">
+                        <JobDetails />
+                    </Route>
+                </Switch>
+            </Router>
             </article>
         </div>
     )

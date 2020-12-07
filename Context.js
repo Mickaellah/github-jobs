@@ -22,7 +22,8 @@ const Context = React.createContext();
 export default function ContextProvider({children}) {
     const initialState = {
         loading: false,
-        data: []
+        data: [],
+        search: ''
     }
     const [ state, dispatch ] = useReducer(reducer, initialState);
     const API = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json";
@@ -35,6 +36,11 @@ export default function ContextProvider({children}) {
                 dispatch({type: "JOBS", data: data});
             });
     }, [API])
+
+    // // function FilterJobCity() {
+    //      const newArray = state.data.filter(job => job.location.toLowerCase().indexOf(search.toLowerCase()) === -1);
+    //      console.log(newArray);
+    // // }
 
 
     return (

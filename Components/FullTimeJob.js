@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components';
-import Form from './Form';
+import {Context} from '../Context';
 
 const FormStyling = styled.form`
     margin-block-start: 32px;
@@ -11,6 +11,7 @@ const FormStyling = styled.form`
 
 
 export default function FullTimeJob() {
+    const {state} = useContext(Context);
     return (
         <FormStyling>
             <input type="checkbox" id="checkbox" />
