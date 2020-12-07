@@ -32124,6 +32124,43 @@ function SearchForLocation() {
     placeholder: "City, state, zip code or country"
   }));
 }
+},{"react":"node_modules/react/index.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"Components/CheckboxesForJobLocation.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = CheckboxesForJobLocation;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const FormStyling = _styledComponents.default.form`
+    margin-block-start: 32px;
+    fieldset {
+        border: none;
+        display: flex;
+        padding-inline: 0;
+    }
+    label {
+        margin-inline-start: 16px;
+    }
+`;
+
+function CheckboxesForJobLocation() {
+  return /*#__PURE__*/_react.default.createElement(FormStyling, null, /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("input", {
+    type: "checkbox"
+  }), /*#__PURE__*/_react.default.createElement("label", null, "London")), /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("input", {
+    type: "checkbox"
+  }), /*#__PURE__*/_react.default.createElement("label", null, "Amsterdam")), /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("input", {
+    type: "checkbox"
+  }), /*#__PURE__*/_react.default.createElement("label", null, "New York")), /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("input", {
+    type: "checkbox"
+  }), /*#__PURE__*/_react.default.createElement("label", null, "Berlin")));
+}
 },{"react":"node_modules/react/index.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
@@ -32142,12 +32179,14 @@ var _FullTimeJob = _interopRequireDefault(require("./Components/FullTimeJob"));
 
 var _SearchForLocation = _interopRequireDefault(require("./Components/SearchForLocation"));
 
+var _CheckboxesForJobLocation = _interopRequireDefault(require("./Components/CheckboxesForJobLocation"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function App() {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Form.default, null), /*#__PURE__*/_react.default.createElement(_FullTimeJob.default, null), /*#__PURE__*/_react.default.createElement(_SearchForLocation.default, null), /*#__PURE__*/_react.default.createElement(_JobLists.default, null));
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Form.default, null), /*#__PURE__*/_react.default.createElement(_FullTimeJob.default, null), /*#__PURE__*/_react.default.createElement(_SearchForLocation.default, null), /*#__PURE__*/_react.default.createElement(_CheckboxesForJobLocation.default, null), /*#__PURE__*/_react.default.createElement(_JobLists.default, null));
 }
-},{"react":"node_modules/react/index.js","./Components/Form":"Components/Form.js","./Components/JobLists":"Components/JobLists.js","./Components/FullTimeJob":"Components/FullTimeJob.js","./Components/SearchForLocation":"Components/SearchForLocation.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./Components/Form":"Components/Form.js","./Components/JobLists":"Components/JobLists.js","./Components/FullTimeJob":"Components/FullTimeJob.js","./Components/SearchForLocation":"Components/SearchForLocation.js","./Components/CheckboxesForJobLocation":"Components/CheckboxesForJobLocation.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
