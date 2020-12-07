@@ -1,2 +1,45 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #dbdbdb;
+}
+
+body > * {
+    margin: 16px;
+}
+
+.search_form{
+    padding: 32px;
+    background-image: url('/backgroundImg.6e3bffce.png');
+    background-repeat: no-repeat;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+input[type="search"] {
+    width: 100%;
+    font-family: 'Poppins_medium';
+    padding-right: 30%;
+    padding-block: 16px;
+    border-radius: 5px;
+    border: none;
+    background-color: #ffffff;
+    padding-inline-start: 16px;
+    color: #dbdbdb;
+    margin-block-start: 8px;
+}
+
+button[type="submit"] {
+    font-family: 'Poppins_medium';
+    margin-left: -80px;
+    background-color: #1e86ff;
+    color: black;
+    border: 0;
+    padding-inline: 16px;
+    padding-block: 12px;
+    border-radius: 5px;
+    -webkit-appearance: none;
+}
+
 
 /*# sourceMappingURL=/styles.8986bff4.css.map */
