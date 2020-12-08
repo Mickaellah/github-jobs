@@ -5,7 +5,7 @@ function reducer(state, action) {
         case "LOADING": {
             return {
                 ...state,
-                loading: true
+                loading: false
             }
         }
         case "JOBS": {
@@ -21,7 +21,7 @@ const Context = React.createContext();
 
 export default function ContextProvider({children}) {
     const initialState = {
-        loading: false,
+        loading: true,
         data: [],
         search: ''
     }
@@ -34,8 +34,9 @@ export default function ContextProvider({children}) {
             .then(response => response.json())
             .then(data => {
                 dispatch({type: "JOBS", data: data});
+                console.log(data);
             });
-    }, [API])
+    }, []);
 
     // // function FilterJobCity() {
     //      const newArray = state.data.filter(job => job.location.toLowerCase().indexOf(search.toLowerCase()) === -1);

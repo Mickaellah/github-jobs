@@ -33895,7 +33895,7 @@ function reducer(state, action) {
     case "LOADING":
       {
         return { ...state,
-          loading: true
+          loading: false
         };
       }
 
@@ -33916,7 +33916,7 @@ function ContextProvider({
   children
 }) {
   const initialState = {
-    loading: false,
+    loading: true,
     data: [],
     search: ''
   };
@@ -33931,8 +33931,9 @@ function ContextProvider({
         type: "JOBS",
         data: data
       });
+      console.log(data);
     });
-  }, [API]); // // function FilterJobCity() {
+  }, []); // // function FilterJobCity() {
   //      const newArray = state.data.filter(job => job.location.toLowerCase().indexOf(search.toLowerCase()) === -1);
   //      console.log(newArray);
   // // }
@@ -33966,7 +33967,8 @@ function JobLists() {
   const {
     state
   } = (0, _react.useContext)(_Context.Context);
-  return /*#__PURE__*/_react.default.createElement("div", null, state.data.map(job => {
+  console.log(state.data);
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, state.loading && /*#__PURE__*/_react.default.createElement("h2", null, "Loading..."), !state.loading && state.data && /*#__PURE__*/_react.default.createElement("div", null, state.data.map(job => {
     let time = new Date(job.created_at);
     return /*#__PURE__*/_react.default.createElement("div", {
       key: job.id,
@@ -33977,14 +33979,14 @@ function JobLists() {
     }), /*#__PURE__*/_react.default.createElement("div", {
       className: "content"
     }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-      to: `/job/${job.url}`
+      to: `/${job.url}`
     }, /*#__PURE__*/_react.default.createElement("h3", null, job.company)), /*#__PURE__*/_react.default.createElement("p", null, job.title), /*#__PURE__*/_react.default.createElement("button", {
       className: "button",
       type: "button"
     }, job.type), /*#__PURE__*/_react.default.createElement("div", {
       className: "location"
     }, /*#__PURE__*/_react.default.createElement("p", null, job.location), /*#__PURE__*/_react.default.createElement("span", null, time.toLocaleTimeString('it-IT')))));
-  }));
+  })));
 }
 },{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Context":"Context.js"}],"node_modules/shallowequal/index.js":[function(require,module,exports) {
 //
@@ -36032,16 +36034,29 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function JobDetails() {
   const {
-    url
+    id
   } = (0, _reactRouterDom.useParams)();
   const {
     state
   } = (0, _react.useContext)(_Context.Context);
-  const findId = state.data.filter(job => job.url === url);
-  console.log(findId);
-  return /*#__PURE__*/_react.default.createElement("div", null, findId.map(job => {
-    return /*#__PURE__*/_react.default.createElement("p", null, job.description);
-  }));
+  const [job, setJob] = (0, _react.useState)([]);
+  const API = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json";
+
+  async function getSingleJob() {
+    try {
+      const res = await fetch(API + id);
+      const newJob = await res.text();
+      setJob(newJob);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  (0, _react.useEffect)(() => {
+    getSingleJob();
+  }, [id]);
+  if (!job.title) return null;
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, job.title), /*#__PURE__*/_react.default.createElement("p", null, job.description));
 }
 },{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Context":"Context.js"}],"App.js":[function(require,module,exports) {
 "use strict";
@@ -36075,11 +36090,12 @@ function App() {
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "search_different_jobs"
   }, /*#__PURE__*/_react.default.createElement(_FullTimeJob.default, null), /*#__PURE__*/_react.default.createElement(_SearchForLocation.default, null), /*#__PURE__*/_react.default.createElement(_CheckboxesForJobLocation.default, null)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
-    path: "/job"
+    exact: true,
+    path: "/"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "jobs"
   }, /*#__PURE__*/_react.default.createElement(_JobLists.default, null))), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
-    path: "/job/:url"
+    path: "/:id"
   }, /*#__PURE__*/_react.default.createElement(_JobDetails.default, null))))));
 }
 },{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./Components/Form":"Components/Form.js","./Components/JobLists":"Components/JobLists.js","./Components/FullTimeJob":"Components/FullTimeJob.js","./Components/SearchForLocation":"Components/SearchForLocation.js","./Components/CheckboxesForJobLocation":"Components/CheckboxesForJobLocation.js","./Components/JobDetails":"Components/JobDetails.js"}],"index.js":[function(require,module,exports) {
@@ -36124,7 +36140,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53978" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61241" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

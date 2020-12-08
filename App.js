@@ -29,12 +29,12 @@ export default function App() {
 
             <Router>
                 <Switch>
-                    <Route path="/job">
+                    <Route exact path="/">
                         <div className="jobs">
                             <JobLists />
                         </div>
                     </Route>
-                    <Route path="/job/:url">
+                    <Route path="/:id">
                         <JobDetails />
                     </Route>
                 </Switch>

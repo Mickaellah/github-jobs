@@ -5,29 +5,35 @@ import {Context} from '../Context';
 
 export default function JobLists() {
     const {state} = useContext(Context);
+    console.log(state.data);
 
     return (
-        <div>
-            {state.data.map(job => {
-                let time = new Date(job.created_at);
-                return (
-                    <div key={job.id} className="job_card">
-                        <img src={job.company_logo} alt="Company logo" />
-                        <div className="content">
-                            <Link to={`/job/${job.url}`}>
-                                <h3>{job.company}</h3>
-                            </Link>
-                            <p>{job.title}</p>
-                            <button className="button" type="button">{job.type}</button>
-                            <div className="location">
-                                <p>{job.location}</p>
-                                <span>{time.toLocaleTimeString('it-IT')}</span>
+        <>
+            {state.loading && <h2>Loading...</h2>}
+            {!state.loading && state.data && (
+                <div>
+                    {state.data.map(job => {
+                        let time = new Date(job.created_at);
+                        return (
+                            <div key={job.id} className="job_card">
+                                <img src={job.company_logo} alt="Company logo" />
+                                <div className="content">
+                                    <Link to={`/${job.url}`}>
+                                        <h3>{job.company}</h3>
+                                    </Link>
+                                    <p>{job.title}</p>
+                                    <button className="button" type="button">{job.type}</button>
+                                    <div className="location">
+                                        <p>{job.location}</p>
+                                        <span>{time.toLocaleTimeString('it-IT')}</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                )
-            })
-            }
-        </div>
+                        )
+                    })
+                    }
+                </div>
+            )}
+        </>
     )
 }
