@@ -12,8 +12,6 @@ const FormStyling = styled.form`
 export default function FullTimeJob() {
     const {state, dispatch} = useContext(Context);
     const [isChecked, setIsChecked] = useState(false);
-    // const {checked} = state;
-    // console.log(checked);
 
     function handleSubmit(e) {
         e.stopPropagation();

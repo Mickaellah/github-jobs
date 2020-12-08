@@ -35988,8 +35988,7 @@ function FullTimeJob() {
     state,
     dispatch
   } = (0, _react.useContext)(_Context.Context);
-  const [isChecked, setIsChecked] = (0, _react.useState)(false); // const {checked} = state;
-  // console.log(checked);
+  const [isChecked, setIsChecked] = (0, _react.useState)(false);
 
   function handleSubmit(e) {
     e.stopPropagation();
