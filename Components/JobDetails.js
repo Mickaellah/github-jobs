@@ -9,8 +9,7 @@ export default function JobDetails() {
     const {state} = useContext(Context);
     const [job, setJob] = useState([]);
 
-    const API = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json";
-
+    const API = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?";
 
     async function getSingleJob() {
         try {
@@ -30,10 +29,12 @@ export default function JobDetails() {
 
     return (
         <div>
-            <h1>
-                {job.title}
-            </h1>
-            <p>{job.description}</p>
+            {job.map(job => {
+                <article key={job.id}>
+                    <h2>{job.title}</h2>
+                    <p>{job.description}</p>
+                </article>
+            })}
         </div>
     )
 }
