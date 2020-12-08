@@ -28,11 +28,8 @@ export default function ContextProvider({children}) {
         job: [],
         checked: false
     }
-    const [jobs, setJobs] = useState([]);
     const [ state, dispatch ] = useReducer(reducer, initialState);
     const API = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?";
-
-    let {data, job} = state;
 
     useEffect(() => {
         dispatch({type: "LOADING"})
@@ -43,24 +40,8 @@ export default function ContextProvider({children}) {
             });
     }, []);
 
-    function handleChange(e) {
-        let {data} = state;
-        const filteredArray = data.map(job => {
-            return job;
-        }).filter(job => {
-            return job.company.toLowerCase() === e.target.value;
-        });
-        setJobs(e.target.value);
-        dispatch({type: "JOBS", data: filteredArray});
-    }
-
-    function FilterJobTitle(e) {
-        e.preventDefault();
-        dispatch({type: "JOBS", data: job});
-    }
-
     return (
-        <Context.Provider value={{state, dispatch, jobs, FilterJobTitle, handleChange}}>
+        <Context.Provider value={{state, dispatch}}>
             {children}
         </Context.Provider>
     )

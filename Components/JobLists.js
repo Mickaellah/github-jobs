@@ -14,6 +14,8 @@ export default function JobLists() {
                 <div>
                     {data.map(job => {
                         let time = new Date(job.created_at);
+
+                        console.log(job.type);
                         return (
                             <Link to={`/${job.url}`} key={job.id}>
                                 <div className="job_card">

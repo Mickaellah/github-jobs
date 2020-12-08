@@ -33901,13 +33901,8 @@ function ContextProvider({
     job: [],
     checked: false
   };
-  const [jobs, setJobs] = (0, _react.useState)([]);
   const [state, dispatch] = (0, _react.useReducer)(reducer, initialState);
   const API = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?";
-  let {
-    data,
-    job
-  } = state;
   (0, _react.useEffect)(() => {
     dispatch({
       type: "LOADING"
@@ -33919,38 +33914,10 @@ function ContextProvider({
       });
     });
   }, []);
-
-  function handleChange(e) {
-    let {
-      data
-    } = state;
-    const filteredArray = data.map(job => {
-      return job;
-    }).filter(job => {
-      return job.company.toLowerCase() === e.target.value;
-    });
-    setJobs(e.target.value);
-    dispatch({
-      type: "JOBS",
-      data: filteredArray
-    });
-  }
-
-  function FilterJobTitle(e) {
-    e.preventDefault();
-    dispatch({
-      type: "JOBS",
-      data: job
-    });
-  }
-
   return /*#__PURE__*/_react.default.createElement(Context.Provider, {
     value: {
       state,
-      dispatch,
-      jobs,
-      FilterJobTitle,
-      handleChange
+      dispatch
     }
   }, children);
 }
@@ -33973,18 +33940,34 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function Form() {
   const {
     state,
-    jobs,
-    FilterJobTitle,
-    handleChange
+    dispatch
   } = (0, _react.useContext)(_Context.Context);
+  const [title, setTitle] = (0, _react.useState)('');
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log(e.target.value); // let companies = []
+
+    state.data.map(job => {
+      let companies = job.company;
+      console.log(companies);
+    });
+    const filterArray = state.data.filter(job => job.toLowerCase().includes(title));
+    console.log(filterArray);
+    dispatch({
+      type: "JOBS",
+      job: filterArray
+    });
+  }
+
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "search_form"
   }, /*#__PURE__*/_react.default.createElement("form", {
-    onSubmit: FilterJobTitle
+    onSubmit: handleSubmit
   }, /*#__PURE__*/_react.default.createElement("input", {
     type: "search",
-    value: jobs,
-    onChange: e => handleChange(e),
+    value: title,
+    onChange: e => setTitle(e.target.value),
     placeholder: "Title, companies, expertise"
   }), /*#__PURE__*/_react.default.createElement("button", {
     type: "submit"
@@ -34017,6 +34000,7 @@ function JobLists() {
   } = state;
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, state.loading && /*#__PURE__*/_react.default.createElement("h2", null, "Loading..."), !state.loading && state.data && /*#__PURE__*/_react.default.createElement("div", null, data.map(job => {
     let time = new Date(job.created_at);
+    console.log(job.type);
     return /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
       to: `/${job.url}`,
       key: job.id
@@ -36208,7 +36192,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61406" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52009" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
