@@ -33921,7 +33921,7 @@ function ContextProvider({
     }
   }, children);
 }
-},{"react":"node_modules/react/index.js"}],"Components/Form.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"Components/SearchJobByTitle.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35988,7 +35988,7 @@ function FullTimeJob() {
     id: "checkbox"
   }), /*#__PURE__*/_react.default.createElement("label", null, "Full time"));
 }
-},{"react":"node_modules/react/index.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","../Context":"Context.js"}],"Components/SearchForLocation.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","../Context":"Context.js"}],"Components/SearchJobByCity.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36212,13 +36212,13 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactRouterDom = require("react-router-dom");
 
-var _Form = _interopRequireDefault(require("./Components/Form"));
+var _SearchJobByTitle = _interopRequireDefault(require("./Components/SearchJobByTitle"));
 
 var _JobLists = _interopRequireDefault(require("./Components/JobLists"));
 
 var _FullTimeJob = _interopRequireDefault(require("./Components/FullTimeJob"));
 
-var _SearchForLocation = _interopRequireDefault(require("./Components/SearchForLocation"));
+var _SearchJobByCity = _interopRequireDefault(require("./Components/SearchJobByCity"));
 
 var _CheckboxesForJobLocation = _interopRequireDefault(require("./Components/CheckboxesForJobLocation"));
 
@@ -36227,11 +36227,11 @@ var _JobDetails = _interopRequireDefault(require("./Components/JobDetails"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function App() {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Form.default, null), /*#__PURE__*/_react.default.createElement("article", {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_SearchJobByTitle.default, null), /*#__PURE__*/_react.default.createElement("article", {
     className: "main_components"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "search_different_jobs"
-  }, /*#__PURE__*/_react.default.createElement(_FullTimeJob.default, null), /*#__PURE__*/_react.default.createElement(_SearchForLocation.default, null), /*#__PURE__*/_react.default.createElement(_CheckboxesForJobLocation.default, null)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+  }, /*#__PURE__*/_react.default.createElement(_FullTimeJob.default, null), /*#__PURE__*/_react.default.createElement(_SearchJobByCity.default, null), /*#__PURE__*/_react.default.createElement(_CheckboxesForJobLocation.default, null)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     exact: true,
     path: "/"
   }, /*#__PURE__*/_react.default.createElement("div", {
@@ -36240,7 +36240,7 @@ function App() {
     path: "/:id"
   }, /*#__PURE__*/_react.default.createElement(_JobDetails.default, null))))));
 }
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./Components/Form":"Components/Form.js","./Components/JobLists":"Components/JobLists.js","./Components/FullTimeJob":"Components/FullTimeJob.js","./Components/SearchForLocation":"Components/SearchForLocation.js","./Components/CheckboxesForJobLocation":"Components/CheckboxesForJobLocation.js","./Components/JobDetails":"Components/JobDetails.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./Components/SearchJobByTitle":"Components/SearchJobByTitle.js","./Components/JobLists":"Components/JobLists.js","./Components/FullTimeJob":"Components/FullTimeJob.js","./Components/SearchJobByCity":"Components/SearchJobByCity.js","./Components/CheckboxesForJobLocation":"Components/CheckboxesForJobLocation.js","./Components/JobDetails":"Components/JobDetails.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));

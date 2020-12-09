@@ -8,10 +8,10 @@ import {
 
 
 
-import Form from './Components/Form';
+import SearchJobByTitle from './Components/SearchJobByTitle';
 import JobLists from './Components/JobLists';
 import FullTimeJob from './Components/FullTimeJob';
-import SearchForLocation from './Components/SearchForLocation';
+import SearchJobByCity from './Components/SearchJobByCity';
 import CheckboxesForJobocation from './Components/CheckboxesForJobLocation';
 
 import JobDetails from './Components/JobDetails';
@@ -19,11 +19,11 @@ import JobDetails from './Components/JobDetails';
 export default function App() {
     return (
         <div>
-            <Form />
+            <SearchJobByTitle />
             <article className="main_components">
                 <div className="search_different_jobs">
                     <FullTimeJob />
-                    <SearchForLocation />
+                    <SearchJobByCity />
                     <CheckboxesForJobocation />
                 </div>
 
