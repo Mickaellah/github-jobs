@@ -14,8 +14,8 @@ export default function FullTimeJob() {
     const [isChecked, setIsChecked] = useState(false);
 
     function handleSubmit(e) {
-        e.stopPropagation();
-        setIsChecked(!isChecked);
+        setIsChecked(e.target.isChecked);
+
         const filterArray = state.data.filter(data => data.type === "Full Time");
         console.log(filterArray);
 
@@ -23,7 +23,7 @@ export default function FullTimeJob() {
     }
     return (
         <FormStyling>
-            <input type="checkbox" checked={isChecked} onChange={handleSubmit} id="checkbox" />
+            <input type="checkbox" value={isChecked} onChange={handleSubmit} id="checkbox" />
             <label>Full time</label>
         </FormStyling>
     )

@@ -35972,8 +35972,7 @@ function FullTimeJob() {
   const [isChecked, setIsChecked] = (0, _react.useState)(false);
 
   function handleSubmit(e) {
-    e.stopPropagation();
-    setIsChecked(!isChecked);
+    setIsChecked(e.target.isChecked);
     const filterArray = state.data.filter(data => data.type === "Full Time");
     console.log(filterArray);
     dispatch({
@@ -35984,7 +35983,7 @@ function FullTimeJob() {
 
   return /*#__PURE__*/_react.default.createElement(FormStyling, null, /*#__PURE__*/_react.default.createElement("input", {
     type: "checkbox",
-    checked: isChecked,
+    value: isChecked,
     onChange: handleSubmit,
     id: "checkbox"
   }), /*#__PURE__*/_react.default.createElement("label", null, "Full time"));
