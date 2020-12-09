@@ -3,22 +3,23 @@ import {Context} from '../Context';
 
 export default function Form() {
     const {state, dispatch} = useContext(Context);
-    const [title, setTitle] = useState('');
+    const [jobTitle, setJobTitle] = useState('');
 
     function handleSubmit(e) {
         e.preventDefault();
 
-        const companies = state.data.filter(itm => { 
-            if (!title) return undefined
-            return itm.company.toLowerCase().includes(title.toLowerCase())});
+        const jobs = state.data.filter(job => { 
+            if (!jobTitle) return undefined;
+            return job.title.toLowerCase().includes(jobTitle.toLowerCase());
+        });
 
-        dispatch({type: "JOBS", job: companies});
+        dispatch({type: "JOBS", job: jobs});
     }
 
     return (
         <div className="search_form">
             <form onSubmit={handleSubmit}>
-                <input type="search" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title, companies, expertise" />
+                <input type="search" value={jobTitle} onChange={(e) => setJobTitle(e.target.value)} placeholder="Title" />
                 <button type="submit">Search</button>
             </form>
         </div>

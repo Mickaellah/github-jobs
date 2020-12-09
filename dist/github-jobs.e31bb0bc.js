@@ -33942,17 +33942,17 @@ function Form() {
     state,
     dispatch
   } = (0, _react.useContext)(_Context.Context);
-  const [title, setTitle] = (0, _react.useState)('');
+  const [jobTitle, setJobTitle] = (0, _react.useState)('');
 
   function handleSubmit(e) {
     e.preventDefault();
-    const companies = state.data.filter(itm => {
-      if (!title) return undefined;
-      return itm.company.toLowerCase().includes(title.toLowerCase());
+    const jobs = state.data.filter(job => {
+      if (!jobTitle) return undefined;
+      return job.title.toLowerCase().includes(jobTitle.toLowerCase());
     });
     dispatch({
       type: "JOBS",
-      job: companies
+      job: jobs
     });
   }
 
@@ -33962,9 +33962,9 @@ function Form() {
     onSubmit: handleSubmit
   }, /*#__PURE__*/_react.default.createElement("input", {
     type: "search",
-    value: title,
-    onChange: e => setTitle(e.target.value),
-    placeholder: "Title, companies, expertise"
+    value: jobTitle,
+    onChange: e => setJobTitle(e.target.value),
+    placeholder: "Title"
   }), /*#__PURE__*/_react.default.createElement("button", {
     type: "submit"
   }, "Search")));
