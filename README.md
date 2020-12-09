@@ -70,17 +70,37 @@ Template for your readme :
 
 ## Overview
 
-![screenshot](https://user-images.githubusercontent.com/16707738/92399059-5716eb00-f132-11ea-8b14-bcacdc8ec97b.png)
+![screenshot](./github-jobs-screenshot.png)
 
 Introduce your projects by taking a screenshot or a gif. Try to tell visitors a story about your project by answering:
 
 -   Where can I see your demo?
+
+        This project built with react, html for setting up the app and css for styling the page. The demo of this app can be seen in the contact part at the bottom of this document. It is not the best but I have done my best to get it and how it looks.
+
 -   What was your experience?
 -   In a few sentences, explain the structure of your project.
+
+        I have quite lots of files in this project, I separated every single function into file, like the forms for filtering jobs. Each file has their own functionality and their use in this app. There are four files for filtering, a file for the main app which is the file which holds the job list and I named it according to what it used for, one file for the job detail. I have a file named App.js which renders all of the files and called in the index.js file. The context file is the file where I fetch the API, where I use useContext and useReducer for this project to not use lots of useState.
+
 -   If you had more time, what area of your project would you improve?
+
+        If I had more time, you would have tried to finish the input field for filtering jobs by the city, state zip code or country, which is the second form in the page, but also to name my function names according to their use and what their roles are.
+
 -   Did you learn anything new while working on this project?
+
+        In this project I was learning how to avoid cors error by adding the url in front of the API which is https://cors-anywhere.herokuapp.com/, and it is really helpful. I spend a while to find this solution by reading a document about cors. I also learnt how useParams and react router link to one another.
+
 -   What was the most challenging part for you?
+
+        The most challenging part was to filter the jobs if their title or the company are the same as what you type or search in the first form component. Getting the API working as it got cors error at the first time that I fetch it.
+
+
 -   Any other comments?
+
+#### Note:
+
+        Waiting for the app to load and to get all of the data takes so much time, I don’t know why that is, but maybe it is because the API is too heavy. My loading state works but really quick and disappear while the fetch does not come back yet.
 
 
 

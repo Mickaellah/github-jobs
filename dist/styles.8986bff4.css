@@ -150,10 +150,12 @@ button[type="submit"] {
 @media (min-width: 700px) {
     .main_components {
         display: flex;
+        justify-content: space-between;
     }
 
     .jobs {
-        margin-inline-start: 64px;
+        margin-inline-start: 150px;
+        max-width: 800px;
     }
 
     .job_details{

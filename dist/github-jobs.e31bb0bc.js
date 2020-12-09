@@ -33902,7 +33902,7 @@ function ContextProvider({
     checked: false
   };
   const [state, dispatch] = (0, _react.useReducer)(reducer, initialState);
-  const API = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?";
+  const API = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json";
   (0, _react.useEffect)(() => {
     dispatch({
       type: "LOADING"
