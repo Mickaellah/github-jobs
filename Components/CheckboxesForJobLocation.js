@@ -23,7 +23,6 @@ export default function CheckboxesForJobLocation() {
         setIsChecked(e.target.isChecked)
 
         const filterArr = state.data.filter(job => job.location === "United States");
-        console.log(filterArr);
         dispatch({type: "JOBS", job: filterArr});
     }
 
@@ -31,7 +30,6 @@ export default function CheckboxesForJobLocation() {
         setIsChecked(e.target.isChecked);
 
         const filterArr = state.data.filter(job => job.location === "India");
-        console.log(filterArr);
         dispatch({type: "JOBS", job: filterArr});
     }
 
@@ -39,7 +37,6 @@ export default function CheckboxesForJobLocation() {
         setIsChecked(e.target.isChecked);
 
         const filterArr = state.data.filter(job => job.location === "New York City");
-        console.log(filterArr);
         dispatch({type: "JOBS", job: filterArr});
     }
 
@@ -47,7 +44,6 @@ export default function CheckboxesForJobLocation() {
         setIsChecked(e.target.isChecked);
 
         const filterArr = state.data.filter(job => job.location === "Berlin");
-        console.log(filterArr);
         dispatch({type: "JOBS", job: filterArr});
     }
 
@@ -55,7 +51,6 @@ export default function CheckboxesForJobLocation() {
         setIsChecked(e.target.isChecked);
 
         const filterArr = state.data.filter(job => job.location === "Dresden");
-        console.log(filterArr);
         dispatch({type: "JOBS", job: filterArr});
     }
 
@@ -63,7 +58,6 @@ export default function CheckboxesForJobLocation() {
         setIsChecked(e.target.isChecked);
 
         const filterArr = state.data.filter(job => job.location === "Barcelona");
-        console.log(filterArr);
         dispatch({type: "JOBS", job: filterArr});
     }
 

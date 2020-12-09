@@ -36116,7 +36116,6 @@ function CheckboxesForJobLocation() {
   function handleUnitedState(e) {
     setIsChecked(e.target.isChecked);
     const filterArr = state.data.filter(job => job.location === "United States");
-    console.log(filterArr);
     dispatch({
       type: "JOBS",
       job: filterArr
@@ -36126,7 +36125,6 @@ function CheckboxesForJobLocation() {
   function handleIndia(e) {
     setIsChecked(e.target.isChecked);
     const filterArr = state.data.filter(job => job.location === "India");
-    console.log(filterArr);
     dispatch({
       type: "JOBS",
       job: filterArr
@@ -36136,7 +36134,6 @@ function CheckboxesForJobLocation() {
   function handleNewYork(e) {
     setIsChecked(e.target.isChecked);
     const filterArr = state.data.filter(job => job.location === "New York City");
-    console.log(filterArr);
     dispatch({
       type: "JOBS",
       job: filterArr
@@ -36146,7 +36143,6 @@ function CheckboxesForJobLocation() {
   function handleBerlin(e) {
     setIsChecked(e.target.isChecked);
     const filterArr = state.data.filter(job => job.location === "Berlin");
-    console.log(filterArr);
     dispatch({
       type: "JOBS",
       job: filterArr
@@ -36156,7 +36152,6 @@ function CheckboxesForJobLocation() {
   function handleDresden(e) {
     setIsChecked(e.target.isChecked);
     const filterArr = state.data.filter(job => job.location === "Dresden");
-    console.log(filterArr);
     dispatch({
       type: "JOBS",
       job: filterArr
@@ -36166,7 +36161,6 @@ function CheckboxesForJobLocation() {
   function handleBarcelona(e) {
     setIsChecked(e.target.isChecked);
     const filterArr = state.data.filter(job => job.location === "Barcelona");
-    console.log(filterArr);
     dispatch({
       type: "JOBS",
       job: filterArr
