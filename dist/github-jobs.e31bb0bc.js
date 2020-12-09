@@ -33946,17 +33946,13 @@ function Form() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(e.target.value); // let companies = []
-
-    state.data.map(job => {
-      let companies = job.company;
-      console.log(companies);
+    const companies = state.data.filter(itm => {
+      if (!title) return undefined;
+      return itm.company.toLowerCase().includes(title.toLowerCase());
     });
-    const filterArray = state.data.filter(job => job.toLowerCase().includes(title));
-    console.log(filterArray);
     dispatch({
       type: "JOBS",
-      job: filterArray
+      job: companies
     });
   }
 
