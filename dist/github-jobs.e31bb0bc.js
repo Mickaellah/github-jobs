@@ -33907,7 +33907,12 @@ function ContextProvider({
     dispatch({
       type: "LOADING"
     });
-    fetch(API).then(response => response.json()).then(data => {
+    fetch(API, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    }).then(response => response.json()).then(data => {
       dispatch({
         type: "LOADING",
         data: data
@@ -34005,8 +34010,9 @@ function JobLists() {
     data
   } = state;
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, state.loading && /*#__PURE__*/_react.default.createElement("h2", null, "Loading..."), !state.loading && state.data && /*#__PURE__*/_react.default.createElement("div", null, data.map(job => {
-    let time = new Date(job.created_at);
-    console.log(job.type);
+    // Small operation to get the number of hours between two dates.
+    let time = new Date().getTime() - new Date(job.created_at).getTime();
+    let result = Math.floor(time / (1000 * 60 * 60 * 24));
     return /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
       to: `/${job.id}`,
       className: "link_to_jobDetails",
@@ -34033,7 +34039,7 @@ function JobLists() {
     }, /*#__PURE__*/_react.default.createElement("img", {
       src: _access_time24px.default,
       alt: "Access time"
-    }), /*#__PURE__*/_react.default.createElement("span", null, time.toLocaleTimeString('it-IT')))))));
+    }), /*#__PURE__*/_react.default.createElement("span", null, result, " hours ago"))))));
   })));
 }
 },{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../icons/access_time-24px.svg":"icons/access_time-24px.svg","../icons/public-24px.svg":"icons/public-24px.svg","../Context":"Context.js"}],"node_modules/shallowequal/index.js":[function(require,module,exports) {
@@ -36016,11 +36022,17 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = SearchForLocation;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
+var _Context = require("../Context");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 const FormStyling = _styledComponents.default.form`
     margin-block-start: 32px;
@@ -36034,13 +36046,35 @@ const FormStyling = _styledComponents.default.form`
 `;
 
 function SearchForLocation() {
+  const {
+    state,
+    dispatch
+  } = (0, _react.useContext)(_Context.Context);
+  const [city, setCity] = (0, _react.useState)('');
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    setCity(e.target.value);
+    const jobCity = state.data.filter(job => {
+      if (!city) return undefined;
+      return job.location.toLowerCase().includes(city.toLowerCase());
+    });
+    console.log(jobCity);
+    dispatch({
+      type: "JOBS",
+      job: jobCity
+    });
+  }
+
   return /*#__PURE__*/_react.default.createElement(FormStyling, null, /*#__PURE__*/_react.default.createElement("label", null, "Location"), /*#__PURE__*/_react.default.createElement("input", {
     type: "search",
+    value: city,
+    onChange: e => handleSubmit(e),
     id: "search",
     placeholder: "City, state, zip code or country"
   }));
 }
-},{"react":"node_modules/react/index.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"Components/CheckboxesForJobLocation.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","../Context":"Context.js"}],"Components/CheckboxesForJobLocation.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36199,8 +36233,12 @@ function JobDetails() {
   } = (0, _reactRouterDom.useParams)();
   const {
     state
-  } = (0, _react.useContext)(_Context.Context);
-  const findId = state.data.find(data => data.id === id);
+  } = (0, _react.useContext)(_Context.Context); // Find which one are you clicked on to get the description
+
+  const findId = state.data.find(data => data.id === id); // Small operation to get hours between two dates.
+
+  let time = new Date().getTime() - new Date(findId.created_at).getTime();
+  let result = Math.floor(time / (1000 * 60 * 60 * 24));
   return /*#__PURE__*/_react.default.createElement("section", {
     className: "job_details"
   }, /*#__PURE__*/_react.default.createElement("article", {
@@ -36229,7 +36267,7 @@ function JobDetails() {
     alt: "Access time"
   }), /*#__PURE__*/_react.default.createElement("p", {
     className: "time"
-  }, findId.created_at))), /*#__PURE__*/_react.default.createElement("button", {
+  }, result, " hours ago"))), /*#__PURE__*/_react.default.createElement("button", {
     className: "button"
   }, findId.type)), /*#__PURE__*/_react.default.createElement("div", {
     className: "company"
@@ -36329,7 +36367,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54272" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64471" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

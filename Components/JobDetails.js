@@ -11,7 +11,12 @@ export default function JobDetails() {
     const {id} = useParams();
     const {state} = useContext(Context);
 
+    // Find which one are you clicked on to get the description
     const findId = state.data.find(data => data.id === id);
+
+    // Small operation to get hours between two dates.
+    let time = new Date().getTime() - new Date(findId.created_at).getTime();
+    let result = Math.floor(time / (1000 * 60 * 60 * 24));
 
     return (
         <section className="job_details">
@@ -29,7 +34,7 @@ export default function JobDetails() {
                         <h2>{findId.title}</h2>
                         <div className="accessing_time">
                             <img src={AccessTime} alt="Access time" />
-                            <p className="time">{findId.created_at}</p>
+                            <p className="time">{result} hours ago</p>
                         </div>
                     </div>
                 

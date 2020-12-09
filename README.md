@@ -137,5 +137,5 @@ $ npm start
 
 ## Contact
 
--   Website [your-website.com](https://{your-web-site-link})
--   GitHub [@your-username](https://{github.com/your-usermame})
+-   Website [Github-jobs-clopedia.com](https://github-jobs-clopedia.netlify.app/)
+-   GitHub [@Mickaellah](https://github.com/Mickaellah)

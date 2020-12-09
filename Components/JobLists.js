@@ -16,9 +16,12 @@ export default function JobLists() {
             {!state.loading && state.data && (
                 <div>
                     {data.map(job => {
-                        let time = new Date(job.created_at);
 
-                        console.log(job.type);
+                        // Small operation to get the number of hours between two dates.
+
+                        let time = new Date().getTime() - new Date(job.created_at).getTime();
+                        let result = Math.floor(time / (1000 * 60 * 60 * 24));
+
                         return (
                             <Link to={`/${job.id}`} className="link_to_jobDetails" key={job.id}>
                                 <div className="job_card">
@@ -34,7 +37,7 @@ export default function JobLists() {
                                             </div>
                                             <div className="accessing_time">
                                                 <img src={AccessTime} alt="Access time" />
-                                                <span>{time.toLocaleTimeString('it-IT')}</span>
+                                                <span>{result} hours ago</span>
                                             </div>
                                         </div>
                                     </div>

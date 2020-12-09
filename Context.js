@@ -1,4 +1,4 @@
-import React, {useEffect, useReducer, useState} from 'react'
+import React, {useEffect, useReducer} from 'react'
 
 function reducer(state, action) {
     switch (action.type) {
@@ -33,7 +33,12 @@ export default function ContextProvider({children}) {
 
     useEffect(() => {
         dispatch({type: "LOADING"})
-        fetch(API)
+        fetch(API, {
+            headers : { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        })
             .then(response => response.json())
             .then(data => {
                 dispatch({type: "LOADING", data: data});
