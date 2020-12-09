@@ -1,5 +1,8 @@
 import React, {useContext, useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
+import LeftArrow from '../icons/keyboard_backspace-24px.svg';
+import AccessTime from '../icons/access_time-24px.svg';
+import Public from '../icons/public-24px.svg';
 
 import {Context} from '../Context';
 import {Link} from 'react-router-dom';
@@ -13,7 +16,10 @@ export default function JobDetails() {
     return (
         <section className="job_details">
             <article className="about_job_offer">
-                <Link to="/" className="go_back">Back to search</Link><br />
+                <div className="link_to_go_back">
+                    <img src={LeftArrow} alt="Go back" />
+                    <Link to="/" className="go_back">Back to search</Link><br />
+                </div>
                 <h3>How to apply</h3>
                 <p>Please email a copy of your resume and online portfilio to <a href="mailto">wes@kasisto.com</a> & CC <a href="mailto">eric@kasisto.com</a></p>
             </article>
@@ -21,7 +27,10 @@ export default function JobDetails() {
                 <div className="job_title">
                     <div>
                         <h2>{findId.title}</h2>
-                        <p>{findId.created_at}</p>
+                        <div className="accessing_time">
+                            <img src={AccessTime} alt="Access time" />
+                            <p className="time">{findId.created_at}</p>
+                        </div>
                     </div>
                 
                     <button className="button">{findId.type}</button>
@@ -30,7 +39,10 @@ export default function JobDetails() {
                     <img src={findId.company_logo} alt="Company logo" />
                     <div className="company_name">
                         <h3>{findId.company}</h3>
-                        <p>{findId.location}</p>
+                        <div className="public_location">
+                            <img src={Public} alt="Publick" />
+                            <p>{findId.location}</p>
+                        </div>
                     </div>
                 </div>
                 <p className="description">

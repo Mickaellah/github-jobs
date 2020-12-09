@@ -33969,7 +33969,11 @@ function Form() {
     type: "submit"
   }, "Search")));
 }
-},{"react":"node_modules/react/index.js","../Context":"Context.js"}],"Components/JobLists.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../Context":"Context.js"}],"icons/access_time-24px.svg":[function(require,module,exports) {
+module.exports = "/access_time-24px.1f959896.svg";
+},{}],"icons/public-24px.svg":[function(require,module,exports) {
+module.exports = "/public-24px.2a1ac789.svg";
+},{}],"Components/JobLists.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33981,7 +33985,13 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _reactRouterDom = require("react-router-dom");
 
+var _access_time24px = _interopRequireDefault(require("../icons/access_time-24px.svg"));
+
+var _public24px = _interopRequireDefault(require("../icons/public-24px.svg"));
+
 var _Context = require("../Context");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -34013,10 +34023,20 @@ function JobLists() {
       type: "button"
     }, job.type), /*#__PURE__*/_react.default.createElement("div", {
       className: "location"
-    }, /*#__PURE__*/_react.default.createElement("p", null, job.location), /*#__PURE__*/_react.default.createElement("span", null, time.toLocaleTimeString('it-IT'))))));
+    }, /*#__PURE__*/_react.default.createElement("div", {
+      className: "public_location"
+    }, /*#__PURE__*/_react.default.createElement("img", {
+      src: _public24px.default,
+      alt: "Public"
+    }), /*#__PURE__*/_react.default.createElement("p", null, job.location)), /*#__PURE__*/_react.default.createElement("div", {
+      className: "accessing_time"
+    }, /*#__PURE__*/_react.default.createElement("img", {
+      src: _access_time24px.default,
+      alt: "Access time"
+    }), /*#__PURE__*/_react.default.createElement("span", null, time.toLocaleTimeString('it-IT')))))));
   })));
 }
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Context":"Context.js"}],"node_modules/shallowequal/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../icons/access_time-24px.svg":"icons/access_time-24px.svg","../icons/public-24px.svg":"icons/public-24px.svg","../Context":"Context.js"}],"node_modules/shallowequal/index.js":[function(require,module,exports) {
 //
 
 module.exports = function shallowEqual(objA, objB, compare, compareContext) {
@@ -36145,7 +36165,9 @@ function CheckboxesForJobLocation() {
     onChange: handleBarcelona
   }), /*#__PURE__*/_react.default.createElement("label", null, "Barcelona")));
 }
-},{"react":"node_modules/react/index.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","../Context":"Context.js"}],"Components/JobDetails.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","../Context":"Context.js"}],"icons/keyboard_backspace-24px.svg":[function(require,module,exports) {
+module.exports = "/keyboard_backspace-24px.abc7fb14.svg";
+},{}],"Components/JobDetails.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36157,7 +36179,15 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _reactRouterDom = require("react-router-dom");
 
+var _keyboard_backspace24px = _interopRequireDefault(require("../icons/keyboard_backspace-24px.svg"));
+
+var _access_time24px = _interopRequireDefault(require("../icons/access_time-24px.svg"));
+
+var _public24px = _interopRequireDefault(require("../icons/public-24px.svg"));
+
 var _Context = require("../Context");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -36175,10 +36205,15 @@ function JobDetails() {
     className: "job_details"
   }, /*#__PURE__*/_react.default.createElement("article", {
     className: "about_job_offer"
-  }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "link_to_go_back"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: _keyboard_backspace24px.default,
+    alt: "Go back"
+  }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: "/",
     className: "go_back"
-  }, "Back to search"), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("h3", null, "How to apply"), /*#__PURE__*/_react.default.createElement("p", null, "Please email a copy of your resume and online portfilio to ", /*#__PURE__*/_react.default.createElement("a", {
+  }, "Back to search"), /*#__PURE__*/_react.default.createElement("br", null)), /*#__PURE__*/_react.default.createElement("h3", null, "How to apply"), /*#__PURE__*/_react.default.createElement("p", null, "Please email a copy of your resume and online portfilio to ", /*#__PURE__*/_react.default.createElement("a", {
     href: "mailto"
   }, "wes@kasisto.com"), " & CC ", /*#__PURE__*/_react.default.createElement("a", {
     href: "mailto"
@@ -36187,7 +36222,14 @@ function JobDetails() {
     className: "details"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "job_title"
-  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, findId.title), /*#__PURE__*/_react.default.createElement("p", null, findId.created_at)), /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, findId.title), /*#__PURE__*/_react.default.createElement("div", {
+    className: "accessing_time"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: _access_time24px.default,
+    alt: "Access time"
+  }), /*#__PURE__*/_react.default.createElement("p", {
+    className: "time"
+  }, findId.created_at))), /*#__PURE__*/_react.default.createElement("button", {
     className: "button"
   }, findId.type)), /*#__PURE__*/_react.default.createElement("div", {
     className: "company"
@@ -36196,11 +36238,16 @@ function JobDetails() {
     alt: "Company logo"
   }), /*#__PURE__*/_react.default.createElement("div", {
     className: "company_name"
-  }, /*#__PURE__*/_react.default.createElement("h3", null, findId.company), /*#__PURE__*/_react.default.createElement("p", null, findId.location))), /*#__PURE__*/_react.default.createElement("p", {
+  }, /*#__PURE__*/_react.default.createElement("h3", null, findId.company), /*#__PURE__*/_react.default.createElement("div", {
+    className: "public_location"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: _public24px.default,
+    alt: "Publick"
+  }), /*#__PURE__*/_react.default.createElement("p", null, findId.location)))), /*#__PURE__*/_react.default.createElement("p", {
     className: "description"
   }, findId.description.replace(/<[^>]+>/g, ''))));
 }
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Context":"Context.js"}],"App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../icons/keyboard_backspace-24px.svg":"icons/keyboard_backspace-24px.svg","../icons/access_time-24px.svg":"icons/access_time-24px.svg","../icons/public-24px.svg":"icons/public-24px.svg","../Context":"Context.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36282,7 +36329,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54105" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54272" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

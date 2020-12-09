@@ -98,10 +98,49 @@ button[type="submit"] {
 
 .go_back {
     text-decoration: none;
+    margin-inline-start: 16px;
+}
+
+.public_location {
+    display: flex;
+}
+
+.public_location > img {
+    width: 24px;
+    height: 24px;
+    margin-block-start: 12px;
+}
+
+.public_location > p {
+    margin-inline-start: 16px;
+}
+
+.accessing_time {
+    display: flex;
+    margin-block-start: 16px;
+}
+
+.accessing_time > img {
+    width: 24px;
+    height: 24px;
+    margin-block-start: -6px;
+}
+
+.accessing_time > span {
+    margin-inline-start: 16px;
 }
 
 .about_job_offer > p {
     margin-block-start: 32px;
+}
+
+.link_to_go_back {
+    display: flex;
+}
+
+.link_to_go_back > img {
+    width: 24px;
+    height: 24px;
 }
 
 .company {
@@ -117,6 +156,15 @@ button[type="submit"] {
 
 .company_name {
     margin-inline-start: 32px;
+}
+
+.time {
+    margin-inline-start: 16px;
+    margin-block-start: 0;
+}
+
+.job_details {
+    margin-block-start: 64px;
 }
 
 .job_title {
@@ -160,7 +208,7 @@ button[type="submit"] {
 
     .job_details{
         display: flex;
-        margin-top: 400px;
+        margin-top: 464px;
         margin-inline-start: -108px;
     }
 

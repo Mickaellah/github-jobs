@@ -1,6 +1,9 @@
 import React, {useContext} from 'react';
 import {Link} from 'react-router-dom';
 
+import AccessTime from '../icons/access_time-24px.svg';
+import Public from '../icons/public-24px.svg';
+
 import {Context} from '../Context';
 
 export default function JobLists() {
@@ -25,8 +28,14 @@ export default function JobLists() {
                                         <p>{job.title}</p>
                                         <button className="button" type="button">{job.type}</button>
                                         <div className="location">
-                                            <p>{job.location}</p>
-                                            <span>{time.toLocaleTimeString('it-IT')}</span>
+                                            <div className="public_location">
+                                                <img src={Public} alt="Public" />
+                                                <p>{job.location}</p>
+                                            </div>
+                                            <div className="accessing_time">
+                                                <img src={AccessTime} alt="Access time" />
+                                                <span>{time.toLocaleTimeString('it-IT')}</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
