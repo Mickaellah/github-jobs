@@ -152,6 +152,10 @@ button[type="submit"] {
         display: flex;
     }
 
+    .jobs {
+        margin-inline-start: 64px;
+    }
+
     .job_details{
         display: flex;
         margin-top: 400px;
