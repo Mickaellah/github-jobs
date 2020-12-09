@@ -33902,7 +33902,7 @@ function ContextProvider({
     checked: false
   };
   const [state, dispatch] = (0, _react.useReducer)(reducer, initialState);
-  const API = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json";
+  const API = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?";
   (0, _react.useEffect)(() => {
     dispatch({
       type: "LOADING"
@@ -36029,11 +36029,17 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = CheckboxesForJobLocation;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
+var _Context = require("../Context");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 const FormStyling = _styledComponents.default.form`
     margin-block-start: 32px;
@@ -36048,17 +36054,99 @@ const FormStyling = _styledComponents.default.form`
 `;
 
 function CheckboxesForJobLocation() {
+  const {
+    state,
+    dispatch
+  } = (0, _react.useContext)(_Context.Context);
+  const [isChecked, setIsChecked] = (0, _react.useState)(false);
+
+  function handleUnitedState(e) {
+    setIsChecked(e.target.isChecked);
+    const filterArr = state.data.filter(job => job.location === "United States");
+    console.log(filterArr);
+    dispatch({
+      type: "JOBS",
+      job: filterArr
+    });
+  }
+
+  function handleIndia(e) {
+    setIsChecked(e.target.isChecked);
+    const filterArr = state.data.filter(job => job.location === "India");
+    console.log(filterArr);
+    dispatch({
+      type: "JOBS",
+      job: filterArr
+    });
+  }
+
+  function handleNewYork(e) {
+    setIsChecked(e.target.isChecked);
+    const filterArr = state.data.filter(job => job.location === "New York City");
+    console.log(filterArr);
+    dispatch({
+      type: "JOBS",
+      job: filterArr
+    });
+  }
+
+  function handleBerlin(e) {
+    setIsChecked(e.target.isChecked);
+    const filterArr = state.data.filter(job => job.location === "Berlin");
+    console.log(filterArr);
+    dispatch({
+      type: "JOBS",
+      job: filterArr
+    });
+  }
+
+  function handleDresden(e) {
+    setIsChecked(e.target.isChecked);
+    const filterArr = state.data.filter(job => job.location === "Dresden");
+    console.log(filterArr);
+    dispatch({
+      type: "JOBS",
+      job: filterArr
+    });
+  }
+
+  function handleBarcelona(e) {
+    setIsChecked(e.target.isChecked);
+    const filterArr = state.data.filter(job => job.location === "Barcelona");
+    console.log(filterArr);
+    dispatch({
+      type: "JOBS",
+      job: filterArr
+    });
+  }
+
   return /*#__PURE__*/_react.default.createElement(FormStyling, null, /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("input", {
-    type: "checkbox"
-  }), /*#__PURE__*/_react.default.createElement("label", null, "London")), /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("input", {
-    type: "checkbox"
-  }), /*#__PURE__*/_react.default.createElement("label", null, "Amsterdam")), /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("input", {
-    type: "checkbox"
+    type: "checkbox",
+    value: isChecked,
+    onChange: handleUnitedState
+  }), /*#__PURE__*/_react.default.createElement("label", null, "United States")), /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("input", {
+    type: "checkbox",
+    value: isChecked,
+    onChange: handleIndia
+  }), /*#__PURE__*/_react.default.createElement("label", null, "India")), /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("input", {
+    type: "checkbox",
+    value: isChecked,
+    onChange: handleNewYork
   }), /*#__PURE__*/_react.default.createElement("label", null, "New York")), /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("input", {
-    type: "checkbox"
-  }), /*#__PURE__*/_react.default.createElement("label", null, "Berlin")));
+    type: "checkbox",
+    value: isChecked,
+    onChange: handleBerlin
+  }), /*#__PURE__*/_react.default.createElement("label", null, "Berlin")), /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("input", {
+    type: "checkbox",
+    value: isChecked,
+    onChange: handleDresden
+  }), /*#__PURE__*/_react.default.createElement("label", null, "Dresden")), /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("input", {
+    type: "checkbox",
+    value: isChecked,
+    onChange: handleBarcelona
+  }), /*#__PURE__*/_react.default.createElement("label", null, "Barcelona")));
 }
-},{"react":"node_modules/react/index.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"Components/JobDetails.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","../Context":"Context.js"}],"Components/JobDetails.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

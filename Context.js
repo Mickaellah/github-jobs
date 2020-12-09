@@ -29,7 +29,7 @@ export default function ContextProvider({children}) {
         checked: false
     }
     const [ state, dispatch ] = useReducer(reducer, initialState);
-    const API = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json";
+    const API = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?";
 
     useEffect(() => {
         dispatch({type: "LOADING"})
