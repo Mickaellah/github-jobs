@@ -53,6 +53,11 @@ button[type="submit"] {
     background-color: #ffffff;
     margin-block-start: 32px;
     border-radius: 10px;
+    color: black;
+}
+
+.link_to_jobDetails{
+    text-decoration: none;
 }
 
 .job_card > * {
@@ -87,20 +92,74 @@ button[type="submit"] {
     text-align: end;
 }
 
+.about_job_offer {
+    margin-block-start: 24px;
+}
+
+.go_back {
+    text-decoration: none;
+}
+
+.about_job_offer > p {
+    margin-block-start: 32px;
+}
+
+.company {
+    display: flex;
+    margin-top: 32px;
+}
+
+.company > img {
+    width: 70px;
+    height: 70px;
+    border-radius: 8px;
+}
+
+.company_name {
+    margin-inline-start: 32px;
+}
+
+.job_title {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.job_title > div {
+    grid-column: 1 / 3;
+}
+
+.job_title > h2 {
+    margin: 0;
+}
+
+.job_title > button {
+    grid-column: 3 / 4;
+    width: 100px;
+    height: 34px;
+    margin-block-start: 24px;
+}
+
+.company_name > h3 {
+    margin: 0;
+}
+
+.description {
+    margin-block-start: 32px;
+}
+
 @media (min-width: 700px) {
     .main_components {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-column-gap: 32px;
-        column-gap: 32px;
+        display: flex;
     }
 
-    .search_different_jobs {
-        grid-column: 1 / 2;
+    .job_details{
+        display: flex;
+        margin-top: 400px;
+        margin-inline-start: -108px;
     }
 
-    .jobs {
-        grid-column: 2 / 4;
+    .details{
+        margin-inline-start: 48px;
     }
 
 }

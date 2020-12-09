@@ -17,7 +17,7 @@ export default function JobLists() {
 
                         console.log(job.type);
                         return (
-                            <Link to={`/${job.url}`} key={job.id}>
+                            <Link to={`/${job.id}`} className="link_to_jobDetails" key={job.id}>
                                 <div className="job_card">
                                     <img src={job.company_logo} alt="Company logo" />
                                     <div className="content">

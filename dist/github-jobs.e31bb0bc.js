@@ -33902,7 +33902,7 @@ function ContextProvider({
     checked: false
   };
   const [state, dispatch] = (0, _react.useReducer)(reducer, initialState);
-  const API = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?";
+  const API = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json";
   (0, _react.useEffect)(() => {
     dispatch({
       type: "LOADING"
@@ -34002,7 +34002,8 @@ function JobLists() {
     let time = new Date(job.created_at);
     console.log(job.type);
     return /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-      to: `/${job.url}`,
+      to: `/${job.id}`,
+      className: "link_to_jobDetails",
       key: job.id
     }, /*#__PURE__*/_react.default.createElement("div", {
       className: "job_card"
@@ -36086,29 +36087,35 @@ function JobDetails() {
   const {
     state
   } = (0, _react.useContext)(_Context.Context);
-  const [job, setJob] = (0, _react.useState)([]);
-  const API = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?";
-
-  async function getSingleJob() {
-    try {
-      const res = await fetch(API + id);
-      const newJob = await res.text();
-      setJob(newJob);
-    } catch (e) {
-      console.error(e);
-    }
-  }
-
-  (0, _react.useEffect)(() => {
-    getSingleJob();
-  }, [id]);
-  if (!job.title) return null;
-  return /*#__PURE__*/_react.default.createElement("div", null, job.map(job => {
-    /*#__PURE__*/
-    _react.default.createElement("article", {
-      key: job.id
-    }, /*#__PURE__*/_react.default.createElement("h2", null, job.title), /*#__PURE__*/_react.default.createElement("p", null, job.description));
-  }));
+  const findId = state.data.find(data => data.id === id);
+  return /*#__PURE__*/_react.default.createElement("section", {
+    className: "job_details"
+  }, /*#__PURE__*/_react.default.createElement("article", {
+    className: "about_job_offer"
+  }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+    to: "/",
+    className: "go_back"
+  }, "Back to search"), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("h3", null, "How to apply"), /*#__PURE__*/_react.default.createElement("p", null, "Please email a copy of your resume and online portfilio to ", /*#__PURE__*/_react.default.createElement("a", {
+    href: "mailto"
+  }, "wes@kasisto.com"), " & CC ", /*#__PURE__*/_react.default.createElement("a", {
+    href: "mailto"
+  }, "eric@kasisto.com"))), /*#__PURE__*/_react.default.createElement("article", {
+    key: findId.id,
+    className: "details"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "job_title"
+  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, findId.title), /*#__PURE__*/_react.default.createElement("p", null, findId.created_at)), /*#__PURE__*/_react.default.createElement("button", {
+    className: "button"
+  }, findId.type)), /*#__PURE__*/_react.default.createElement("div", {
+    className: "company"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: findId.company_logo,
+    alt: "Company logo"
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: "company_name"
+  }, /*#__PURE__*/_react.default.createElement("h3", null, findId.company), /*#__PURE__*/_react.default.createElement("p", null, findId.location))), /*#__PURE__*/_react.default.createElement("p", {
+    className: "description"
+  }, findId.description.replace(/<[^>]+>/g, ''))));
 }
 },{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Context":"Context.js"}],"App.js":[function(require,module,exports) {
 "use strict";
@@ -36192,7 +36199,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52009" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54105" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
